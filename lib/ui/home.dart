@@ -26,7 +26,7 @@ class HomeState extends State<Home>{
         double weight=double.parse(_weightFieldController.text);
 
         double bmi=weight/(height*height);
-        _displayText="Your BMI: "+bmi.toString();
+        _displayText="Your BMI: "+bmi.toStringAsFixed(2);
 
         //determine weight status
 
@@ -54,7 +54,7 @@ class HomeState extends State<Home>{
        appBar: new AppBar(
             title: new Text("BMI"),
             centerTitle: true,
-            backgroundColor: Colors.red,
+            backgroundColor: Colors.pinkAccent,
 
        ),
 
@@ -70,28 +70,28 @@ class HomeState extends State<Home>{
                    width: 200.0,
                  ),
                new Container(
-                   height: 400.0,
+                   height: 290.0,
                    width: 380.0,
-                   color: Colors.white,
+                   color: Colors.grey.shade300,
 
                    child:
                       new Column(
-                        
+
                      children: <Widget>[
                        new TextField(
                          controller: _ageFieldController,
                          keyboardType: TextInputType.number,
-                         decoration: new InputDecoration(icon: new Icon(Icons.person), hintText: "Age"),
+                         decoration: new InputDecoration(icon: new Icon(Icons.person), labelText: "Age",hintText: "e.g. 34"),
                        ),
                        new TextField(
                          controller: _heightFieldController,
                          keyboardType: TextInputType.number,
-                         decoration: new InputDecoration(icon: new Icon(Icons.assessment), hintText: "Height in feet"),
+                         decoration: new InputDecoration(icon: new Icon(Icons.insert_chart), labelText: "Height in feet", hintText: "e.g 4.5"),
                        ),
                        new TextField(
                          controller: _weightFieldController,
                          keyboardType: TextInputType.number,
-                         decoration: new InputDecoration(icon: new Icon(Icons.line_weight), hintText: "Weight in lb"),
+                         decoration: new InputDecoration(icon: new Icon(Icons.line_weight), labelText: "Weight in lb",hintText: "e.g 4.5"),
                        ),
                        new Padding(padding: const EdgeInsets.only(top:10.0)),
                        new Container(
@@ -99,11 +99,15 @@ class HomeState extends State<Home>{
                          
                          child: new RaisedButton( 
                            onPressed: _calculate,
-                           color: Colors.red,
+                           color: Colors.pinkAccent,
                             child: new Text("Calculate", style: new TextStyle(color: Colors.white),)
                          ),
                        ),
+                   new Container(
+                     width: 380.0,
+                     color: Colors.white,
 
+                     child:
                        new Column(
                          children: <Widget>[
                            new Text(_displayText,
@@ -123,9 +127,9 @@ class HomeState extends State<Home>{
                          ],
 
                        ),
-
-                   ],
-                 )
+                   ),
+                     ],
+                      )
                ),
                ],
           )
